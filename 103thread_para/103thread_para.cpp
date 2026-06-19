@@ -21,8 +21,48 @@ void ThreadMain(int p1, float p2, string str, Para p4)
     cout << "ThreadMain " << p1 << " " << p2 << " " << str << " " << p4.name << endl;
 }
 
+void ThreadMainPtr(Para* p)
+{
+    this_thread::sleep_for(100ms);
+    cout << "ThreadMainPtr name = " << p->name << endl;
+}
+
+void ThreadMainRef(Para& p)
+{
+    this_thread::sleep_for(100ms);
+    cout << "ThreadMainPtr name = " << p.name << endl;
+}
+
 int main(int argc, char* argv[])
 {
+    {
+        //传递引用
+        Para p;
+        p.name = "test ref";
+        thread th(ThreadMainRef, ref(p));
+        th.join();
+    }
+    getchar();
+
+    {
+        //传递线程指针
+        Para p;
+        p.name = "test ThreadMainPtr name";
+        thread th(ThreadMainPtr, &p); //错误 ，线程访问的p空间会提前释放
+        th.detach();
+    }
+    // Para 释放
+    getchar();
+
+    {
+        //传递线程指针
+        Para p;
+        p.name = "test ThreadMainPtr name";
+        thread th(ThreadMainPtr, &p);
+        th.join();
+        getchar();
+    }
+
     thread th;
     {
         float f1 = 12.1f;
