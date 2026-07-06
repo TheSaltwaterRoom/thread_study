@@ -1,0 +1,7 @@
+<Solution>
+  <Configurations>
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="109thread_msg_server.vcxproj" Id="fcf67962-8499-4119-890f-5341181d8332" />
+</Solution>

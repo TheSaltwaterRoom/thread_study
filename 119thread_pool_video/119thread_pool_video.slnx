@@ -1,0 +1,7 @@
+<Solution>
+  <Configurations>
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="119thread_pool_video.vcxproj" Id="e675d0e5-8f4c-4d3d-97d1-50fb5d4ba732" />
+</Solution>
